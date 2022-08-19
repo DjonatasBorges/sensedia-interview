@@ -15,7 +15,7 @@ public class OrderBookServiceImpl implements OrderBookService {
     public long calculateTotalBuyOrders(List<Order> orderBook) {
         long totalBuyOrders = 0L;
         for (Order order : orderBook) {
-            if (order.getSide().equals(Side.BUY)) {
+            if (Side.BUY.equals(order.getSide())) {
                 totalBuyOrders += 1;
             }
         }
@@ -26,8 +26,11 @@ public class OrderBookServiceImpl implements OrderBookService {
     public long calculateTotalSellOrders(List<Order> orderBook) {
         long totalSellOrders = 0L;
 
-        for (Order order : orderBook) if (order.getSide().equals(Side.SELL)) totalSellOrders += 1;
-
+        for (Order order : orderBook) {
+            if (Side.SELL.equals(order.getSide())) {
+                totalSellOrders += 1;
+            }
+        }
         return totalSellOrders;
     }
 
@@ -44,8 +47,9 @@ public class OrderBookServiceImpl implements OrderBookService {
     public long calculateTotalQuantityOrders(List<Order> orderBook) {
         long totalQuantifyOrders = 0L;
 
-        for (Order order : orderBook) totalQuantifyOrders += order.getQuantity();
-
+        for (Order order : orderBook) {
+            totalQuantifyOrders += order.getQuantity();
+        }
         return totalQuantifyOrders;
     }
 }
