@@ -26,8 +26,6 @@ public class OrderBookServiceImpl implements OrderBookService {
     public long calculateTotalSellOrders(List<Order> orderBook) {
         long totalSellOrders = 0L;
 
-        // It's an unnecessary comment.
-        // I changed the spelling of "for" and "if" just to demonstrate another way of writing the code.
         for (Order order : orderBook) if (order.getSide().equals(Side.SELL)) totalSellOrders += 1;
 
         return totalSellOrders;
